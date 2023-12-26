@@ -1,0 +1,115 @@
+threagile_version: 1.0.0
+
+# NOTE:
+
+title: Threat Model as Code for AWS Infrastructure
+
+date: 2023-12-22
+
+author:
+  name: Shashank Sanap
+  homepage: https://github.com/Shashanksanap99/
+
+business_criticality: important # values: archive, operational, important, critical, mission-critical
+
+dataFlowDiagram:
+  elements:
+    - id: VPC
+      name: VPC
+      description: The Virtual Private Cloud in AWS
+      type: Network
+
+    - id: LinuxBastionHost
+      name: Linux Bastion Host
+      description: A server in the public subnet for SSH access
+      type: Server
+
+    - id: MyAppServer
+      name: App Server
+      description: An application server in the private subnet
+      type: Server
+
+    - id: DBInstance
+      name: Database Instance
+      description: Database server in the private subnet
+      type: Database
+
+  edges:
+    - from: LinuxBastionHost
+      to: MyAppServer
+      description: Access from Bastion Host to App Server
+
+    - from: MyAppServer
+      to: DBInstance
+      description: Connection between App Server and Database
+
+threatModel:
+  threats:
+    - id: UnauthorizedAccess
+      name: Unauthorized Access
+      description: Unauthorized access to servers or services
+      category: AccessControl
+      severity: High
+      target: LinuxBastionHost, MyAppServer, DBInstance
+      mitigations:
+        - name: Strong Authentication
+          description: Enforce strong authentication mechanisms like SSH keys
+
+    - id: DataExfiltration
+      name: Data Exfiltration
+      description: Unauthorized extraction of data
+      category: Data
+      severity: High
+      target: MyAppServer, DBInstance
+      mitigations:
+        - name: Encryption
+          description: Encrypt sensitive data at rest and in transit
+
+securityRules:
+  - id: SSHAccessToBastion
+    name: SSH Access to Bastion Host
+    category: Network
+    priority: High
+    target: LinuxBastionHost
+    accessControl: Permit
+    direction: Ingress
+    protocol: SSH
+    source: External
+    destination: LinuxBastionHost
+    ports:
+      - 22
+
+  - id: AppToDBCommunication
+    name: App to DB Communication
+    category: Network
+    priority: High
+    target: MyAppServer, DBInstance
+    accessControl: Permit
+    direction: Bidirectional
+    protocol: TCP
+    source: MyAppServer
+    destination: DBInstance
+    ports:
+      - 3306  # Assuming MySQL
+
+securityConsiderations:
+  - id: NetworkSecurity
+    name: Network Security
+    description: Ensure network access controls are robust
+    recommendations:
+      - name: Use Security Groups
+        description: Utilize AWS Security Groups to control traffic between instances
+
+  - id: DataSecurity
+    name: Data Security
+    description: Secure sensitive data within the infrastructure
+    recommendations:
+      - name: Encryption of Data
+        description: Encrypt sensitive data in transit and at rest
+
+  - id: AccessControl
+    name: Access Control
+    description: Implement strict access controls
+    recommendations:
+      - name: Principle of Least Privilege
+        description: Grant minimum necessary permissions to users and services
