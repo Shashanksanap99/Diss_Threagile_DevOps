@@ -10,7 +10,7 @@ jobs:
   
     threagile_job:
       runs-on: ubuntu-latest
-      name: Threat Model Analysis Using ChatGPT
+      name: ChatGPT Generated Threat Analysis
       steps:
         
         # Checkout the repo
