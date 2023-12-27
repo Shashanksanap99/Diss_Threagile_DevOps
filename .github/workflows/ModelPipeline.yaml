@@ -1,7 +1,7 @@
 on:
     push:
       paths:
-        - 'ChatGPT_threagile.yaml' # useful to filter this job to execute only when the threat model changes
+        - 'threagile.yaml' # useful to filter this job to execute only when the threat model changes
     workflow_dispatch:
          # This event allows manual triggering of the workflow
   
@@ -10,7 +10,7 @@ jobs:
   
     threagile_job:
       runs-on: ubuntu-latest
-      name: ChatGPT Generated Threat Analysis
+      name: Threat Analysis of Threat Model as code
       steps:
         
         # Checkout the repo
@@ -22,7 +22,7 @@ jobs:
           id: threagile
           uses: threagile/run-threagile-action@v1
           with:
-            model-file: 'ChatGPT_threagile.yaml'
+            model-file: 'threagile.yaml'
        
         # Archive resulting files as artifacts
         - name: Archive Results
