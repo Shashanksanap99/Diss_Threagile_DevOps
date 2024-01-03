@@ -28,9 +28,9 @@ technical_overview:
 questions: # Can add custom questions Arises during the process
   How are the admin clients managed/protected against compromise?: ""
   How are the development clients managed/protected against compromise?: >
-    Managed by XYZ
+    Still in Progress
   How are the build pipeline components managed/protected against compromise?: >
-    Managed by XYZ
+    Managed by Github
 
 
 abuse_cases:
