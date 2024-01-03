@@ -26,7 +26,7 @@ technical_overview:
   images:
 
 questions: # Can add custom questions Arises during the process
-  How are the admin clients managed/protected against compromise?: ""
+  How are the admin clients managed/protected against compromise?: "check for the pipeline"
   How are the development clients managed/protected against compromise?: >
     Managed by XYZ
   How are the build pipeline components managed/protected against compromise?: >
