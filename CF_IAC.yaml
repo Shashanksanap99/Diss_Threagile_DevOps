@@ -149,16 +149,6 @@ Resources:
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref InternetGateway
 
-  # Private Route Table 
-
-  PrivateRouteTable:
-    Type: AWS::EC2::RouteTable
-    Properties:
-      VpcId: !Ref VPC
-      Tags:
-      - Key: Name
-        Value: Private
-
   # Attach the public subnets to public route tables
 
   PublicSubnetARouteTableAssociation:
@@ -166,14 +156,6 @@ Resources:
     Properties:
       SubnetId: !Ref PublicSubnetA
       RouteTableId: !Ref PublicRouteTable
-
-  # Attach the private subnets to private route tables    
-
-  PrivateSubnetARouteTableAssociation:
-    Type: AWS::EC2::SubnetRouteTableAssociation
-    Properties:
-      SubnetId: !Ref PrivateSubnetA
-      RouteTableId: !Ref PrivateRouteTable
  
   # Security group for Public Subnet
 
@@ -323,9 +305,6 @@ Outputs:
   PrivateSubnetA:
     Description: SubnetId of the Private subnet A
     Value: !Ref PrivateSubnetA
-  PrivateRouteTable:
-    Description: Private route table 
-    Value: !Ref PrivateRouteTable
   PrivateSubnetInstanceSG:
     Description: SG for instances in the private subnet
     Value: !Ref PrivateSubnetInstanceSG
