@@ -601,6 +601,7 @@ shared_runtimes:
       - Private-Subnet
       - db-instance
       - sql-database
+      - app-server
 
 risk_tracking:
 
