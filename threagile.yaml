@@ -89,7 +89,7 @@ data_assets:
   Internet Data Transfer:
     <<: *data-transfer 
     id: internet-data-transfer
-    description: Internet Data Transfer (including transient credentials when entered for checking them)
+    description: Internet Data Transfer
     confidentiality: strictly-confidential 
     availability: critical 
     justification_cia_rating: >
@@ -255,7 +255,6 @@ technical_assets:
         data_assets_sent: 
            - internet-data-transfer
         data_assets_received: 
-        
       Route Table Access:
         target: public-route-1
         description: Link to the public route 1
@@ -323,7 +322,6 @@ technical_assets:
         data_assets_received: 
           - internet-data-transfer
           - client-application-code
-
       Subnet to Route table connection :
         target: public-route-1
         description: Link to the Public Route 1
@@ -606,30 +604,30 @@ shared_runtimes:
 
 risk_tracking:
 
-  unencrypted-asset@*: # wildcards "*" between the @ characters are possible
-    status: unchecked # values: unchecked, in-discussion, accepted, in-progress, mitigated, false-positive
+  unencrypted-asset@*: 
+    status: unchecked 
     justification: The hardening measures were unchecked
     ticket: a-1
-    date: 2023-12-27
+    date: 2024-01-04
     checked_by: Shashank Sanap
 
-  missing-authentication-second-factor@*@*@*: # wildcards "*" between the @ characters are possible
-    status: unchecked # values: unchecked, in-discussion, accepted, in-progress, mitigated, false-positive
+  missing-authentication-second-factor@*@*@*: 
+    status: unchecked 
     justification: The hardening measures were unchecked
     ticket: a-1
-    date: 2023-12-27
+    date: 2024-01-04
     checked_by: Shashank Sanap
 
-  missing-hardening@*: # wildcards "*" between the @ characters are possible
-    status: unchecked # values: unchecked, in-discussion, accepted, in-progress, mitigated, false-positive
+  missing-hardening@*: 
+    status: unchecked 
     justification: The hardening measures are unchecked
     ticket: a-1
-    date: 2023-12-27
+    date: 2024-01-04
     checked_by: Shashank Sanap
 
-  dos-risky-access-across-trust-boundary@*@*@*: # wildcards "*" between the @ characters are possible
-    status: unchecked # values: unchecked, in-discussion, accepted, in-progress, mitigated, false-positive
+  dos-risky-access-across-trust-boundary@*@*@*: 
+    status: unchecked 
     justification: The hardening measures are unchecked
     ticket: a-1
-    date: 2023-12-27
+    date: 2024-01-04
     checked_by: Shashank Sanap
