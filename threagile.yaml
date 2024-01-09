@@ -542,7 +542,7 @@ trust_boundaries:
       - aws:ec2
     technical_assets_inside:
       - Public-Subnet
-      # - Linux-Bastion-Host
+      - Linux-Bastion-Host
     trust_boundaries_nested:
 
   Private Instance:
