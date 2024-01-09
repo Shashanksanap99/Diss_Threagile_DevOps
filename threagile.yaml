@@ -553,7 +553,7 @@ trust_boundaries:
       - aws:ec2
     technical_assets_inside: 
       - Private-Subnet
-      # - db-instance
+      - db-instance
     trust_boundaries_nested: 
 
   Application Network:
