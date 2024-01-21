@@ -72,25 +72,26 @@ tags_available:
 
 data_assets:
 
-  Data Transfer: &data-transfer
-    id: data-transfer
+  Data Transfer: &data-transfer   # Configure data transfer as base 
+    id: data-transfer             # Such that it can be inherited by other parameters
     description: Data Transfer
     usage: business 
     tags:
     origin: Customer
     owner: Shashank
     quantity: many 
-    confidentiality: confidential 
-    integrity: critical 
-    availability: operational 
+    confidentiality: confidential   # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: critical             # values: archive, operational, important, critical, mission-critical 
+    availability: operational       # values: archive, operational, important, critical, mission-critical
     justification_cia_rating: >
       data transfer might contain financial data as well as personally identifiable information (PII).
 
   Internet Data Transfer:
-    <<: *data-transfer 
+    <<: *data-transfer         # Inherited data transfer parameter 
     id: internet-data-transfer
     description: Internet Data Transfer
     confidentiality: strictly-confidential 
+    integrity: critical
     availability: critical 
     justification_cia_rating: >
       Internet data transfer used to be available to offer the internet functionality.
@@ -168,48 +169,48 @@ technical_assets:
   App Server:
     id: app-server
     description: App Server
-    type: external-entity 
-    usage: business 
+    type: external-entity         # values: external-entity, process, datastore
+    usage: business               # values: business, devops
     used_as_client_by_human: true
     out_of_scope: false
     justification_out_of_scope:
-    size: application 
+    size: application             # values: system, service, application, component
     technology: web-server 
     tags:
     internet: false
-    machine: virtual 
-    encryption: none 
+    machine: virtual              # values: physical, virtual, container, serverless
+    encryption: none              # values: none, transparent, data-with-symmetric-shared-key, data-with-asymmetric-shared-key, data-with-enduser-individual-key
     owner: Shashank
-    confidentiality: confidential 
-    integrity: important 
-    availability: important 
+    confidentiality: confidential # values: public, internal, restricted, confidential, strictly-confidential
+    integrity: important          # values: archive, operational, important, critical, mission-critical
+    availability: important       # values: archive, operational, important, critical, mission-critical
     justification_cia_rating: >
       The client used by Shashank to administer and use the system.
     multi_tenant: false
     redundant: false
     custom_developed_parts: false
-    data_assets_processed: 
+    data_assets_processed:        # sequence of IDs to reference
       - database-data-transfer
       - app-server-logs
       - server-application-code
-    data_assets_stored: 
-    data_formats_accepted: 
+    data_assets_stored:           # sequence of IDs to reference
+    data_formats_accepted:        # sequence of formats like: json, xml, serialization, file, csv
     communication_links:
       Internal Access:
         target: Private-Subnet
         description: Link to the Private system
         protocol: https 
-        authentication: token 
-        authorization: technical-user
+        authentication: credentials       # values: none, credentials, session-id, token, client-certificate, two-factor
+        authorization: none               # values: none, technical-user, enduser-identity-propagation
         tags:
           - aws:ec2
         vpn: true
         ip_filtered: false
         readonly: false
-        usage: business 
-        data_assets_sent: 
+        usage: business                # values: business, devops
+        data_assets_sent:              # sequence of IDs to reference
           - database-data-transfer
-        data_assets_received: 
+        data_assets_received:          # sequence of IDs to reference
           - data-transfer
           - database-data-transfer
   
@@ -625,9 +626,9 @@ risk_tracking:
     date: 2024-01-04
     checked_by: Shashank Sanap
 
-  dos-risky-access-across-trust-boundary@*@*@*: 
-    status: unchecked 
-    justification: The hardening measures are unchecked
-    ticket: a-1
-    date: 2024-01-04
-    checked_by: Shashank Sanap
+  # dos-risky-access-across-trust-boundary@*@*@*: 
+  #   status: unchecked 
+  #   justification: The hardening measures are unchecked
+  #   ticket: a-1
+  #   date: 2024-01-04
+  #   checked_by: Shashank Sanap
