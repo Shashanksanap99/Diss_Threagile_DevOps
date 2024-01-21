@@ -606,25 +606,26 @@ shared_runtimes:
 risk_tracking:
 
   unencrypted-asset@*: 
-    status: unchecked 
-    justification: The hardening measures were unchecked
+    status: unchecked     # values: unchecked, in-discussion, accepted, in-progress, mitigated, false-positive
+    justification: The IAC Network lacks proper encryption configurations for sensitive data, 
+                   posing a risk of unauthorized access to critical information.
     ticket: a-1
     date: 2024-01-04
     checked_by: Shashank Sanap
 
-  missing-authentication-second-factor@*@*@*: 
-    status: unchecked 
-    justification: The hardening measures were unchecked
-    ticket: a-1
-    date: 2024-01-04
-    checked_by: Shashank Sanap
+  # missing-authentication-second-factor@*@*@*: 
+  #   status: unchecked 
+  #   justification: The hardening measures were unchecked
+  #   ticket: a-1
+  #   date: 2024-01-04
+  #   checked_by: Shashank Sanap
 
-  missing-hardening@*: 
-    status: unchecked 
-    justification: The hardening measures are unchecked
-    ticket: a-1
-    date: 2024-01-04
-    checked_by: Shashank Sanap
+  # missing-hardening@*: 
+  #   status: unchecked 
+  #   justification: The hardening measures are unchecked
+  #   ticket: a-1
+  #   date: 2024-01-04
+  #   checked_by: Shashank Sanap
 
   # dos-risky-access-across-trust-boundary@*@*@*: 
   #   status: unchecked 
