@@ -600,7 +600,7 @@ shared_runtimes:
       - Linux-Bastion-Host
       - Private-Subnet
       - db-instance
-      - sql-database
+      # - sql-database
       - app-server
 
 risk_tracking:
