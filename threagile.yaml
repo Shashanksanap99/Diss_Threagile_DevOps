@@ -432,24 +432,24 @@ technical_assets:
     data_formats_accepted: 
       - xml
       - file
-    communication_links:
-      Database Traffic:
-        target: sql-database
-        description: Link to the RDS Subnet Instance
-        protocol: jdbc 
-        authentication: credentials 
-        authorization: technical-user 
-        tags:
-        vpn: false
-        ip_filtered: false
-        readonly: false
-        usage: business 
-        data_assets_sent: 
-          - internet-data-transfer
-          - database-data-transfer
-        data_assets_received: 
-          - internet-data-transfer
-          - database-data-transfer
+    # communication_links:
+    #   Database Traffic:
+    #     target: sql-database
+    #     description: Link to the RDS Subnet Instance
+    #     protocol: jdbc 
+    #     authentication: credentials 
+    #     authorization: technical-user 
+    #     tags:
+    #     vpn: false
+    #     ip_filtered: false
+    #     readonly: false
+    #     usage: business 
+    #     data_assets_sent: 
+    #       - internet-data-transfer
+    #       - database-data-transfer
+    #     data_assets_received: 
+    #       - internet-data-transfer
+    #       - database-data-transfer
 
   Db Instance:
     id: db-instance
