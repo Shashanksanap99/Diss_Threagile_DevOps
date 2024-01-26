@@ -21,7 +21,7 @@ business_overview:
   images:
 
 technical_overview:
-  description: AWS network infrastructure configures a Virtual Private Cloud (VPC) with defined CIDR blocks, enabling DNS support and hostnames. The setup includes public and private subnets across multiple availability zones for high availability and fault tolerance.Key components of this setup include an internet gateway for external connectivity, route tables to manage traffic flow within the VPC,and security groups to control access to instances. The infrastructure comprises various instances a Linux bastion host in the public subnet for secure SSH access,an application server in the private subnet, and a database instance with security group.
+  description: AWS network infrastructure configures a Virtual Private Cloud (VPC). The setup includes public and private subnets across multiple availability zones for high availability and fault tolerance.Key components of this setup include an internet gateway for external connectivity, route tables to manage traffic flow within the VPC,and security groups to control access to instances. The infrastructure comprises various instances a Linux bastion host in the public subnet for secure SSH access,an application server in the private subnet, and a database instance with security group.
   images:
 
 # questions:
@@ -483,55 +483,55 @@ technical_assets:
       - file
     communication_links:
 
-  RDS Subnet:
-    id: sql-database
-    description: The database behind the private subnet
-    type: datastore 
-    usage: business 
-    used_as_client_by_human: false
-    out_of_scope: false
-    justification_out_of_scope:
-    size: component 
-    technology: database 
-    tags:
-      - linux
-      - mysql
-    internet: false
-    machine: virtual 
-    encryption: data-with-symmetric-shared-key 
-    owner: shashank
-    confidentiality: strictly-confidential 
-    integrity: mission-critical 
-    availability: mission-critical 
-    justification_cia_rating: >
-      The rds database subnet can host databases 
-    multi_tenant: false
-    redundant: false
-    custom_developed_parts: false
-    data_assets_processed: 
-      - db-dumps
-      - database-data-transfer
-    data_assets_stored: 
-      - database-data-transfer
-    data_formats_accepted: 
-    communication_links:
-      Database Traffic:
-        target: db-instance
-        description: Link to the RDS Subnet Instance
-        protocol: jdbc 
-        authentication: credentials 
-        authorization: technical-user 
-        tags:
-        vpn: false
-        ip_filtered: false
-        readonly: false
-        usage: business 
-        data_assets_sent: 
-          - internet-data-transfer
-          - database-data-transfer
-        data_assets_received: 
-          - internet-data-transfer
-          - database-data-transfer
+  # RDS Subnet:
+  #   id: sql-database
+  #   description: The database behind the private subnet
+  #   type: datastore 
+  #   usage: business 
+  #   used_as_client_by_human: false
+  #   out_of_scope: false
+  #   justification_out_of_scope:
+  #   size: component 
+  #   technology: database 
+  #   tags:
+  #     - linux
+  #     - mysql
+  #   internet: false
+  #   machine: virtual 
+  #   encryption: data-with-symmetric-shared-key 
+  #   owner: shashank
+  #   confidentiality: strictly-confidential 
+  #   integrity: mission-critical 
+  #   availability: mission-critical 
+  #   justification_cia_rating: >
+  #     The rds database subnet can host databases 
+  #   multi_tenant: false
+  #   redundant: false
+  #   custom_developed_parts: false
+  #   data_assets_processed: 
+  #     - db-dumps
+  #     - database-data-transfer
+  #   data_assets_stored: 
+  #     - database-data-transfer
+  #   data_formats_accepted: 
+  #   communication_links:
+  #     Database Traffic:
+  #       target: db-instance
+  #       description: Link to the RDS Subnet Instance
+  #       protocol: jdbc 
+  #       authentication: credentials 
+  #       authorization: technical-user 
+  #       tags:
+  #       vpn: false
+  #       ip_filtered: false
+  #       readonly: false
+  #       usage: business 
+  #       data_assets_sent: 
+  #         - internet-data-transfer
+  #         - database-data-transfer
+  #       data_assets_received: 
+  #         - internet-data-transfer
+  #         - database-data-transfer
 
 trust_boundaries:
 
